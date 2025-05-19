@@ -4,18 +4,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // not sure of this font
-const logoFont = localFont({ src: '../../public/fonts/Charlie-Regular.woff2' });
+const logoFont = localFont({ src: '../public/fonts/fonts.ttf' });
 
 export const Logo = () => {
   return (
     <Link href='/'>
-      <div className='flex items-center gap-2 p-2'>
+      <div className='hover:opacity-75 transition items-center gap-x-2 hidden md:flex'>
         <Image
-          src='/logo.png'
+          src='/logo-flowboard.png'
           alt='FlowBoard Logo'
-          width={30}
-          height={30}
-          className='h-10 w-10 rounded-full'
+          width={20}
+          height={20}
+          // 'interinsic' permet à l'image de conserver ses dimensions intrinsèques tout en permettant un redimensionnement via CSS.
+          layout='intrinsic'
+          className='h-10 w-auto rounded-full'
         />
         <p className={cn('text-lg text-neutral-700', logoFont.className)}>
           FlowBoard
