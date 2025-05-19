@@ -10,10 +10,10 @@ export function Navbar() {
         <Logo />
         <div className='flex items-center space-x-4 md:block md:w-auto justify-between w-full'>
           <Button size='sm' variant='outline' asChild>
-            <Link href='/auth/sign-in'>Sign In</Link>
+            <Link href='/sign-in'>Sign In</Link>
           </Button>
           <Button size='sm' asChild>
-            <Link href='/auth/sign-up'>Get your free account</Link>
+            <Link href='/sign-up'>Get your free account</Link>
           </Button>
         </div>
       </div>

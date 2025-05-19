@@ -1,3 +1,4 @@
+import { siteConfig } from '@/config/site';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -13,8 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'FlowBoard the Tool',
-  description: 'Get organized with FlowBoard',
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  icons: [
+    {
+      url: '/logo.png',
+      href: '/logo.png',
+    },
+  ],
 };
 
 export default function RootLayout({
