@@ -44,7 +44,7 @@ export default function LandingPage() {
           productivity.
         </p>
         <Button size='lg' asChild>
-          <Link href='/auth/sign-up'>Get FlowTask</Link>
+          <Link href='/sign-up'>Get FlowTask</Link>
         </Button>
       </section>
     </div>
