@@ -1,15 +1,22 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
+import {
+  clerkMiddleware,
+  ClerkMiddlewareAuth,
+  createRouteMatcher,
+} from '@clerk/nextjs/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/']);
 
-const handleRedirectAfterAuth = (auth, req) => {
-  const { userId, orgId, isPublicRoute } = auth();
+const handleRedirectAfterAuth = async (
+  auth: ClerkMiddlewareAuth,
+  req: NextRequest
+): Promise<NextResponse | undefined> => {
+  const { userId, orgId } = await auth();
 
   if (!userId) return;
 
   // If user has no organization, redirect to /select-org
-  if (userId && isPublicRoute) {
+  if (userId && isPublicRoute(req)) {
     let path = '/select-org';
     // If the user has an organization, redirect to /organization/:id
     if (orgId) {
