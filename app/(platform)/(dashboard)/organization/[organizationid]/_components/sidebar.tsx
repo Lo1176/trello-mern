@@ -66,9 +66,9 @@ export const Sidebar = ({ storageKey = 'f-sidebar-state' }: SidebarProps) => {
           <NavItem
             key={organization.id}
             isActive={activeOrg?.id === organization.id}
-            isExpended={!!expended[organization.id]}
+            isExpanded={!!expended[organization.id]}
             organization={organization as Organization}
-            onExpend={onExpand}
+            onExpand={onExpand}
           />
         ))}
       </Accordion>
