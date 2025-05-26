@@ -7,6 +7,7 @@ import { useOrganization, useOrganizationList } from '@clerk/nextjs';
 import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import { useLocalStorage } from 'usehooks-ts';
+import { NavItem, Organization } from './nav-item';
 interface SidebarProps {
   storageKey?: string;
 }
@@ -31,7 +32,7 @@ export const Sidebar = ({ storageKey = 'f-sidebar-state' }: SidebarProps) => {
     []
   );
 
-  const onExtand = (id: string) => {
+  const onExpand = (id: string) => {
     setExpended((curr) => ({
       ...curr,
       [id]: !expended[id],
@@ -62,7 +63,13 @@ export const Sidebar = ({ storageKey = 'f-sidebar-state' }: SidebarProps) => {
         className='space-y-2'
       >
         {userMemberships.data.map(({ organization }) => (
-          <p key={organization.id}>{organization.id}</p>
+          <NavItem
+            key={organization.id}
+            isActive={activeOrg?.id === organization.id}
+            isExpended={!!expended[organization.id]}
+            organization={organization as Organization}
+            onExpend={onExpand}
+          />
         ))}
       </Accordion>
     </>
