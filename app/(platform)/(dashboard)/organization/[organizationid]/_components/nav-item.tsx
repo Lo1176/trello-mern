@@ -8,7 +8,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Activity, CreditCard, Layout, Settings } from 'lucide-react';
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { usePathname, useRouter } from 'next/navigation';
 
 export type Organization = {
@@ -79,7 +79,10 @@ export const NavItem = ({
               fill
               alt={organization.name}
               className='rounded-sm object-cover'
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <span className='font-medium text-sm'>{organization.name}</span>
         </div>
