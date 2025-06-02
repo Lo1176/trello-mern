@@ -8,7 +8,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Activity, CreditCard, Layout, Settings } from 'lucide-react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { usePathname, useRouter } from 'next/navigation';
 
 export type Organization = {

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import localFont from 'next/font/local';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 
 // not sure of this font
