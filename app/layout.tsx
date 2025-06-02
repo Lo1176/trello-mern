@@ -1,7 +1,7 @@
 import { siteConfig } from '@/config/site';
-import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { ClerkProviderWrapper } from './_components/clerk-provider-wrapper';
 import './globals.css';
 
 const geistSans = Geist({
@@ -38,7 +38,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClerkProvider afterSignOutUrl='/'>{children}</ClerkProvider>
+        {/* Ne pa utiliser ClerkProvider directement dans un Layout, qui par défaut est un Server Component et non pas un Client Component */}
+        <ClerkProviderWrapper>{children}</ClerkProviderWrapper>
       </body>
     </html>
   );
