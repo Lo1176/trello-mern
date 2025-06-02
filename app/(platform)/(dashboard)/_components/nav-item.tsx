@@ -6,9 +6,10 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { Activity, CreditCard, Layout, Settings } from 'lucide-react';
-import Image from "next/image";
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 
 export type Organization = {
@@ -68,26 +69,28 @@ export const NavItem = ({
         onClick={() => onExpand(organization.id)}
         className={cn(
           'flex items-center gap-x-2 p-1.5 text-neutral-700 rounded-md hover:bg-neutral-500/10 transition text-start no-underline hover:no-underline',
-          isActive && !isExpanded && 'bg-sky-500/10 text-sky-700'
+          isActive && !isExpanded && 'bg-green-500/10 text-green-700'
         )}
       >
         <div className='flex items-center gap-x-2'>
-          <div className='w-7 h-7 relative'>
+          <div className='relative'>
             {/* https://nextjs.org/docs/messages/next-image-unconfigured-host */}
             <Image
               src={organization.imageUrl}
-              fill
+              width={28}
+              height={28}
               alt={organization.name}
               className='rounded-sm object-cover'
-              style={{
-                maxWidth: "100%",
-                height: "auto"
-              }} />
+              // style={{
+              //   maxWidth: '100%',
+              //   height: 'auto',
+              // }}
+            />
           </div>
           <span className='font-medium text-sm'>{organization.name}</span>
         </div>
       </AccordionTrigger>
-      <AccordionContent className='pt-1 text-neutral-700'>
+      <AccordionContent className='pl-4 pt-1 text-neutral-700'>
         {routes.map((route) => (
           <Button
             key={route.href}
@@ -96,7 +99,7 @@ export const NavItem = ({
             onClick={() => onClick(route.href)}
             className={cn(
               'w-full font-normal justify-start pl-10 mb-1',
-              pathName === route.href && 'bg-sky-500/10 text-sky-700'
+              pathName === route.href && 'bg-green-500/10 text-green-700'
             )}
           >
             {route.icon}
@@ -105,5 +108,16 @@ export const NavItem = ({
         ))}
       </AccordionContent>
     </AccordionItem>
+  );
+};
+
+NavItem.Skeleton = function NavItemSkeleton() {
+  return (
+    <div className='flex items-center gap-x-2'>
+      <div className='h-10 w-10 relative shrink-0'>
+        <Skeleton className='h-full w-full absolute' />
+      </div>
+      <Skeleton className='h-10 w-full' />
+    </div>
   );
 };

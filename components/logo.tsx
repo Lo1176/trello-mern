@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import localFont from 'next/font/local';
-import Image from "next/image";
+import Image from 'next/image';
 import Link from 'next/link';
 
 // not sure of this font
@@ -17,9 +17,10 @@ export const Logo = () => {
           height={20}
           className='h-10 w-auto rounded-full'
           style={{
-            maxWidth: "100%",
-            height: "auto"
-          }} />
+            maxWidth: '100%',
+            height: 'auto',
+          }}
+        />
         <p className={cn('text-lg text-neutral-700', logoFont.className)}>
           FlowBoard
         </p>
