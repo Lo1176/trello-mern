@@ -6,9 +6,16 @@ const SettingsPage = () => {
       <OrganizationProfile
         appearance={{
           elements: {
-            rootBox: {
+            cardBox: {
               boxShadow: 'none',
-              width: '100%',
+              maxWidth: '100%',
+              border: 'solid 1px var(--color-neutral-100)',
+              borderRadius: '4px',
+            },
+            scrollBox: {
+              borderRadius: '0',
+              borderLeft: 'solid 1px var(--color-neutral-100)',
+              boxShadow: 'none',
             },
           },
         }}
