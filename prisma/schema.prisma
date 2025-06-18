@@ -13,3 +13,9 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// postgreSQL is using UUIDs as primary keys 
+model Board {
+  id    String @id @default(uuid())
+  title String
+}
